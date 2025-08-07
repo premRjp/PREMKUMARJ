@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premkumar J - Software Developer and Data Science Enthusiast Portfolio">
+    <meta name="keywords" content="Premkumar J, portfolio, software developer, data science, web development, AI, ML">
+    <meta name="author" content="Premkumar J">
+    <title>Premkumar J - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #090a0e; /* Professional navy blue */
+            --accent-color: #14b8a6; /* Teal for modern, professional accent */
+            --text-light: #f1f5f9; /* Light text for dark backgrounds */
+            --text-dark: #1f2937; /* Dark text for light backgrounds */
+            --gradient-bg: linear-gradient(135deg, #4E2A4F 0%, #2D1E2F 100%); /* Subtle professional gradient */
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --card-hover-shadow: rgba(0, 0, 0, 0.2);
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: #f8fafc; /* Light gray background for professionalism */
+            font-size: 16px;
+        }
+        
+        .navbar {
+            background: #734B6C !important; /* Match navy blue theme */
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: var(--text-light) !important;
+        }
+        
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: var(--gradient-bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="200" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="800" cy="300" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="400" cy="600" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="700" cy="800" r="3" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-20px) rotate(360deg); }
+        }
+        
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px var(--card-shadow);
+            transition: transform 0.3s ease;
+            object-fit: cover;
+            loading: lazy;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero-content .lead {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.6rem;
+            margin: 0 12px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .section-padding {
+            padding: 100px 0; /* Increased padding for cleaner spacing */
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 70px;
+            height: 4px;
+            background: var(--accent-color);
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 24px var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            animation: scale-in 0.6s ease-out forwards;
+        }
+        
+        @keyframes scale-in {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 32px var(--card-hover-shadow);
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .skill-card:hover::before {
+            left: 100%;
+        }
+        
+        .skill-icon {
+            font-size: 3.2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-card:hover .skill-icon {
+            transform: rotate(5deg);
+        }
+        
+        .progress {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            transition: width 1.5s ease-in-out;
+            width: 0; /* Start at 0 for animation */
+        }
+        
+        .skill-card.visible .progress-bar {
+            width: var(--progress-width); /* Set to actual width when visible */
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px var(--card-shadow);
+            transition: all 0.3s ease;
+            border: none;
+            height: 100%;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 32px var(--card-hover-shadow);
+        }
+        
+        .project-card-header {
+            background: var(--gradient-bg);
+            color: var(--text-light);
+            padding: 1.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .contact-section {
+            background: var(--gradient-bg);
+            color: var(--text-light);
+        }
+        
+        .contact-info {
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 2.5rem;
+            backdrop-filter: blur(12px);
+        }
+        
+        .btn-primary-custom {
+            background: var(--accent-color);
+            border: none;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary-custom:hover {
+            background: #0d9488; /* Darker teal */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px var(--card-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px var(--card-hover-shadow);
+        }
+        
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .about-card:hover::before {
+            left: 100%;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--accent-color);
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-marker {
+            transform: scale(1.5);
+            background: #0d9488;
+        }
+        
+        .timeline-content {
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-content {
+            transform: translateX(10px);
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Premkumar J</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content fade-in">
+                        <h1>Hello, I'm Premkumar J</h1>
+                        <p class="lead">Software Developer & Data Science Enthusiast</p>
+                        <p class="mb-4">Passionate about developing scalable applications and extracting insights from data to drive impactful solutions.</p>
+                        <div class="social-links mb-4">
+                            <a href="https://github.com/premRjp" target="_blank" title="GitHub" aria-label="GitHub Profile">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/prem-kumar-a7aa3022a" target="_blank" title="LinkedIn" aria-label="LinkedIn Profile">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://wa.me/917397603997" target="_blank" title="WhatsApp" aria-label="WhatsApp Contact">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.instagram.com/prem_rjp/?utm_source=qr&igsh=MWxjcTc2b3N4aGEyNg%3D%3D#" target="_blank" title="Instagram" aria-label="Instagram Profile">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                        <a href="#about" class="btn btn-primary-custom btn-lg">
+                            Learn More <i class="fas fa-arrow-down ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="./IMG1.jpg" 
+                         alt="Premkumar J" class="profile-img fade-in" style="animation-delay: 0.3s;" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="row g-4">
+                <!-- Professional Summary -->
+                <div class="col-lg-10 mx-auto">
+                    <div class="about-card fade-in">
+                        <h4 class="mb-4 text-center"><i class="fas fa-user text-primary me-2"></i>Professional Summary</h4>
+                        <p class="lead text-center mb-4">
+                            I am a dedicated software developer and data science enthusiast with over 4 years of experience in building scalable applications and delivering data-driven solutions. My expertise lies in transforming complex datasets into actionable insights using tools like Python, SQL, and PowerBI. I thrive in dynamic environments, leveraging my skills in machine learning, web development, and business intelligence to create impactful solutions that drive business growth.
+                        </p>
+                        <p class="text-center">
+                            My passion for technology and continuous learning has led me to successfully deliver projects ranging from predictive analytics to responsive web applications. I am committed to writing clean, efficient code and mentoring others to excel in AI and data analytics.
+                        </p>
+                    </div>
+                </div>
+                <!-- Education -->
+                <div class="col-lg-6">
+                    <div class="about-card fade-in" style="animation-delay: 0.2s;">
+                        <h4 class="mb-4"><i class="fas fa-graduation-cap text-primary me-2"></i>Education</h4>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h5 class="mb-1">Master of Computer Application</h5>
+                                    <p class="text-muted mb-1">Madurai Kamarajar University</p>
+                                    <small class="text-secondary">2016 - 2019</small>
+                                    <p class="mt-2">Specialized in advanced algorithms, database management systems, and software engineering principles. Completed a thesis on predictive analytics using machine learning.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h5 class="mb-1">B.Sc Information Technology</h5>
+                                    <p class="text-muted mb-1">Madurai Institute of Social Science</p>
+                                    <small class="text-secondary">2013 - 2015</small>
+                                    <p class="mt-2">Built a strong foundation in programming, web development, and information systems. Developed a capstone project on e-commerce website design.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Professional Experience -->
+                <div class="col-lg-6">
+                    <div class="about-card fade-in" style="animation-delay: 0.4s;">
+                        <h4 class="mb-4"><i class="fas fa-briefcase text-primary me-2"></i>Professional Experience</h4>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h5 class="mb-1">Python Data Science Intern</h5>
+                                    <p class="text-muted mb-1">Gateway Software Solutions</p>
+                                    <small class="text-secondary">Dec 2024 - Mar 2025</small>
+                                    <ul class="list-unstyled mt-2">
+                                        <li>Developed machine learning models for predictive analytics with 85%+ accuracy.</li>
+                                        <li>Automated ETL pipelines processing 100GB+ datasets using Python and SQL.</li>
+                                        <li>Created interactive dashboards using Streamlit and PowerBI for stakeholder insights.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h5 class="mb-1">MIS Operator</h5>
+                                    <p class="text-muted mb-1">Madurai Meenakshi Enterprise (HUL Distributor)</p>
+                                    <small class="text-secondary">Jun 2020 - Nov 2024</small>
+                                    <ul class="list-unstyled mt-2">
+                                        <li>Generated daily business reports and KPI dashboards for operational efficiency.</li>
+                                        <li>Optimized supply chain processes, reducing costs by 15%.</li>
+                                        <li>Managed inventory and procurement systems using SQL and Excel.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h5 class="mb-1">Web Designer Intern</h5>
+                                    <p class="text-muted mb-1">Novaws Web Designing</p>
+                                    <small class="text-secondary">2020</small>
+                                    <ul class="list-unstyled mt-2">
+                                        <li>Designed and developed responsive websites using HTML, CSS, and JavaScript.</li>
+                                        <li>Collaborated with clients to gather requirements and deliver tailored solutions.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Key Achievements -->
+                <div class="col-lg-12">
+                    <div class="about-card fade-in" style="animation-delay: 0.6s;">
+                        <h4 class="mb-4 text-center"><i class="fas fa-trophy text-primary me-2"></i>Key Achievements</h4>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-chart-line text-primary me-3 mt-2"></i>
+                                    <div>
+                                        <h6>Data Analytics & BI</h6>
+                                        <p class="small">Designed and deployed 10+ PowerBI and Tableau dashboards with 90%+ client satisfaction.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-robot text-primary me-3 mt-2"></i>
+                                    <div>
+                                        <h6>Machine Learning</h6>
+                                        <p class="small">Deployed 5+ ML models, improving prediction accuracy by 20% on average.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-chalkboard-teacher text-primary me-3 mt-2"></i>
+                                    <div>
+                                        <h6>Training & Mentoring</h6>
+                                        <p class="small">Trained 100+ students in AI/ML and data analytics across multiple institutes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills</h2>
+            <div class="row g-4">
+                <div class="col-md-4 col-sm-6">
+                    <div class="card skill-card fade-in" style="--progress-width: 90%; animation-delay: 0s;">
+                        <div class="card-body">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h5>Programming</h5>
+                            <p>Python, C/C++, Java, JavaScript</p>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-primary"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card skill-card fade-in" style="--progress-width: 85%; animation-delay: 0.2s;">
+                        <div class="card-body">
+                            <div class="skill-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h5>Data Science</h5>
+                            <p>Pandas, NumPy, Scikit-Learn, ML Models</p>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-success"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card skill-card fade-in" style="--progress-width: 80%; animation-delay: 0.4s;">
+                        <div class="card-body">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h5>Web Technologies</h5>
+                            <p>HTML5, CSS3, Bootstrap, jQuery</p>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-info"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card skill-card fade-in" style="--progress-width: 85%; animation-delay: 0.6s;">
+                        <div class="card-body">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h5>Database</h5>
+                            <p>MySQL, PostgreSQL, SQL</p>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-warning"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card skill-card fade-in" style="--progress-width: 80%; animation-delay: 0.8s;">
+                        <div class="card-body">
+                            <div class="skill-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h5>Visualization</h5>
+                            <p>Matplotlib, Seaborn, Plotly, PowerBI</p>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-danger"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card skill-card fade-in" style="--progress-width: 75%; animation-delay: 1s;">
+                        <div class="card-body">
+                            <div class="skill-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h5>Tools</h5>
+                            <p>Jupyter Notebook, Git, Photoshop</p>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-secondary"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title fade-in">Projects</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card project-card fade-in">
+                        <div class="project-card-header">
+                            <h4><i class="fas fa-users me-2"></i>Customer Churn Prediction</h4>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Technologies:</strong> Python, Pandas, NumPy, Scikit-Learn, Matplotlib, SQL</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Developed predictive ML models to identify customers likely to churn</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Processed large datasets using Pandas and NumPy</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Trained models using Logistic Regression, Decision Trees, Random Forest</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Created data visualizations for business insights</li>
+                            </ul>
+                            <a href="https://github.com/premkumarjp276/customer-churn-prediction" target="_blank" class="btn btn-primary-custom btn-sm mt-3" aria-label="View Customer Churn Prediction Repository">
+                                <i class="fab fa-github me-2"></i>View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card project-card fade-in" style="animation-delay: 0.3s;">
+                        <div class="project-card-header">
+                            <h4><i class="fas fa-graduation-cap me-2"></i>AI & ML Workshop</h4>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Duration:</strong> 10 Days Comprehensive Training</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Led AI & ML training at Nehru Institute of Engineering</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Conducted PowerBI sessions at Arjun College of Arts & Science</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Hands-on machine learning model development</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Data visualization and analytics training</li>
+                            </ul>
+                            <a href="https://github.com/premkumarjp276/ai-ml-workshop" target="_blank" class="btn btn-primary-custom btn-sm mt-3" aria-label="View AI & ML Workshop Repository">
+                                <i class="fab fa-github me-2"></i>View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card project-card fade-in" style="animation-delay: 0.6s;">
+                        <div class="project-card-header">
+                            <h4><i class="fas fa-chart-line me-2"></i>Data Analytics Dashboard</h4>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Technologies:</strong> Python, Streamlit, Flask, SQL, PowerBI</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Developed ETL pipelines for data preprocessing</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Created interactive visualizations using Plotly</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Automated data processing tasks with Python</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Real-time data analysis deployment</li>
+                            </ul>
+                            <a href="https://github.com/premkumarjp276/data-analytics-dashboard" target="_blank" class="btn btn-primary-custom btn-sm mt-3" aria-label="View Data Analytics Dashboard Repository">
+                                <i class="fab fa-github me-2"></i>View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card project-card fade-in" style="animation-delay: 0.9s;">
+                        <div class="project-card-header">
+                            <h4><i class="fas fa-globe me-2"></i>Web Applications</h4>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Technologies:</strong> HTML5, CSS3, Bootstrap, jQuery, Photoshop</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Responsive website design from scratch</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Content Management System experience</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Client coordination and requirement analysis</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Modern UI/UX implementation</li>
+                            </ul>
+                            <a href="https://github.com/premkumarjp276/web-applications" target="_blank" class="btn btn-primary-custom btn-sm mt-3" aria-label="View Web Applications Repository">
+                                <i class="fab fa-github me-2"></i>View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding contact-section">
+        <div class="container">
+            <h2 class="section-title text-white fade-in">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-info text-center fade-in">
+                        <h4 class="mb-4">Let's work together!</h4>
+                        <p class="lead mb-4">I'm always interested in new opportunities and exciting projects. Feel free to reach out!</p>
+                        
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-4">
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope fa-2x mb-3"></i>
+                                    <h5>Email</h5>
+                                    <a href="mailto:premkumarjp276@gmail.com" class="text-white">premkumarjp276@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="contact-item">
+                                    <i class="fas fa-phone fa-2x mb-3"></i>
+                                    <h5>Phone</h5>
+                                    <a href="tel:+917397603997" class="text-white">+91 7397603997</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt fa-2x mb-3"></i>
+                                    <h5>Location</h5>
+                                    <span>Madurai, Tamil Nadu, India</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links mb-4">
+                            <a href="https://github.com/premRjp" target="_blank" title="GitHub" aria-label="GitHub Profile">
+                                <i class="fab fa-github fa-2x"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/prem-kumar-a7aa3022a" target="_blank" title="LinkedIn" aria-label="LinkedIn Profile">
+                                <i class="fab fa-linkedin fa-2x"></i>
+                            </a>
+                            <a href="https://wa.me/917397603997" target="_blank" title="WhatsApp" aria-label="WhatsApp Contact">
+                                <i class="fab fa-whatsapp fa-2x"></i>
+                            </a>
+                            <a href="https://www.instagram.com/prem_rjp/?utm_source=qr&igsh=MWxjcTc2b3N4aGEyNg%3D%3D#" target="_blank" title="Instagram" aria-label="Instagram Profile">
+                                <i class="fab fa-instagram fa-2x"></i>
+                            </a>
+                        </div>
+                        
+                        <a href="mailto:premkumarjp276@gmail.com" class="btn btn-primary-custom btn-lg">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Premkumar J. All rights reserved. | Built with <i class="fas fa-heart text-danger"></i> using Bootstrap</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade-in and progress bar animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Trigger progress bar animation
+                    const progressBar = entry.target.querySelector('.progress-bar');
+                    if (progressBar) {
+                        progressBar.style.width = entry.target.style.getPropertyValue('--progress-width');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in and skill-card elements
+        document.querySelectorAll('.fade-in, .skill-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(30, 58, 138, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(30, 58, 138, 0.95)';
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+        });
+
+        // Typing effect for hero section
+        const heroTitle = document.querySelector('.hero-content h1');
+        if (heroTitle) {
+            const text = heroTitle.textContent;
+            heroTitle.textContent = '';
+            let i = 0;
+            
+            setTimeout(() => {
+                const typeWriter = setInterval(() => {
+                    heroTitle.textContent += text.charAt(i);
+                    i++;
+                    if (i > text.length) {
+                        clearInterval(typeWriter);
+                    }
+                }, 100);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
